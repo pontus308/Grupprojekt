@@ -9,3 +9,9 @@
   border: 2px solid grey;
   text-align: center;
 }
+
+#buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}

@@ -1,7 +1,11 @@
 const pokeContainer = document.getElementById("pokeContainer");
+const previousButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+let pokeStart = 1;
+let pokeEnd = pokeStart + 6;
 
 async function fetchPokemon() {
-  for (let i = 1; i < 7; i++) {
+  for (let i = pokeStart; i < pokeEnd; i++) {
     await getPokemon(i);
   }
 }
@@ -37,3 +41,25 @@ fetchPokemon();
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+function clearPokeCards() {
+  pokeContainer.innerHTML = "";
+}
+
+previousButton.onclick = function () {
+  if (pokeStart >= 7) {
+    pokeStart = pokeStart - 6;
+    pokeEnd = pokeEnd - 6;
+    clearPokeCards();
+    fetchPokemon();
+  }
+  return;
+};
+nextButton.onclick = function () {
+  if (pokeStart < 60) {
+    pokeStart = pokeStart + 6;
+    pokeEnd = pokeEnd + 6;
+    clearPokeCards();
+    fetchPokemon();
+  }
+};
