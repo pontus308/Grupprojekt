@@ -1,0 +1,11 @@
+#pokeContainer {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding-top: 50px;
+}
+
+.pokemon {
+  border: 2px solid grey;
+  text-align: center;
+}
