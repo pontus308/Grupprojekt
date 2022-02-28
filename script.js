@@ -30,6 +30,7 @@ function createPokeCard(pokemon) {
         </div>
         <p>${capitalizeFirstLetter(pokemon.name)}</p>
         <p>Price: ${pokemon.weight}</p>
+        <button id="readmore">Read more</button>
         `;
   pokeElement.innerHTML = pokeInnerHTML;
 
