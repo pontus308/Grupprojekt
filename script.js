@@ -1,8 +1,9 @@
 const pokeContainer = document.getElementById("pokeContainer");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
+const modal = document.getElementById("modal");
 let pokeStart = 1;
-let pokeEnd = pokeStart + 6;
+let pokeEnd = pokeStart + 12;
 
 async function fetchPokemon() {
   for (let i = pokeStart; i < pokeEnd; i++) {
@@ -28,9 +29,12 @@ function createPokeCard(pokemon) {
           }.png"
         />
         </div>
-        <p>${capitalizeFirstLetter(pokemon.name)}</p>
-        <p>Price: ${pokemon.weight}</p>
-        <button id="readmore">Read more</button>
+        <p class="name">${capitalizeFirstLetter(pokemon.name)}</p>
+        <p class="p">Price:<span> ${pokemon.weight}</span></p>
+      
+        <button onclick="viewMore(${
+          pokemon.id
+        })" class="btn1">Read more</button>
         `;
   pokeElement.innerHTML = pokeInnerHTML;
 
@@ -63,4 +67,37 @@ nextButton.onclick = function () {
     clearPokeCards();
     fetchPokemon();
   }
+};
+const viewMore = async (id) => {
+  modal.innerHTML = "";
+  const pokeElement = document.createElement("div");
+  pokeElement.classList.add("pokemodal");
+  const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+  const resolve = await fetch(url);
+  const pokemon = await resolve.json();
+  console.log(pokemon);
+  const pokeInnerHTML = `
+        <div class="image-container">
+          <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+            pokemon.id
+          }.png"
+        />
+        </div>
+        <p class="name">${capitalizeFirstLetter(pokemon.name)}</p>
+        <p class="p">Price:<span> ${pokemon.weight}</span></p>
+          <p class="p">height:<span> ${pokemon.height}</span></p>
+        <p class="p">ability:<span> ${
+          pokemon.abilities[0].ability.name
+        }</span></p>
+        <p class="p">move:<span> ${pokemon.moves[0].move.name}</span></p>
+        <p class="p">species:<span> ${pokemon.species.name}</span></p>
+      <button class='btn1' onclick="closemodal()">Close</button>
+        `;
+  pokeElement.innerHTML = pokeInnerHTML;
+
+  modal.appendChild(pokeElement);
+};
+const closemodal = () => {
+  modal.innerHTML = "";
 };

@@ -1,17 +1,84 @@
+body {
+  background-color: rgb(139, 105, 177);
+}
 #pokeContainer {
-  display: flex;
-  justify-content: center;
-  justify-content: space-evenly;
-  padding-top: 50px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  padding-top: 5vh;
 }
 
 .pokemon {
-  border: 2px solid grey;
+  border: 1px solid grey;
   text-align: center;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  margin: 1vh 1vw 1vh 1vw;
+  padding-bottom: 2vh;
 }
-
+.pokemon img {
+  width: 10vw;
+}
+.name {
+  margin: 0vh 0vw 1vh 0vw;
+  font-size: 2vw;
+  font-weight: 800;
+}
+.p {
+  margin: 0vh 0vw 1vh 0vw;
+  font-size: 2vw;
+  font-weight: 400;
+}
+.p span {
+  color: blue;
+}
+.btn1 {
+  cursor: pointer;
+  margin: 1vh 1vw 1vh 1vw;
+  border-radius: 7px;
+  background-color: rgb(139, 105, 177);
+  color: white;
+  padding: 1vh 1vw 1vh 1vw;
+  font-size: 1vw;
+  border: 0.1px black solid;
+}
+.btn1:hover {
+  background-color: rgb(11, 11, 84);
+}
 #buttonContainer {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
+  margin-top: 3vh;
+}
+.btn {
+  cursor: pointer;
+  margin: 1vh 1vw 1vh 1vw;
+  border-radius: 7px;
+  background-color: wheat;
+  color: black;
+  padding: 1vh 1vw 1vh 1vw;
+  font-size: 1.2vw;
+  border: 0.1px black solid;
+}
+.btn:hover {
+  background-color: rgb(11, 11, 84);
+}
+.modal {
+  position: absolute;
+  z-index: 999999999;
+  background-color: rgb(139, 105, 177);
+  top: 25vh;
+  right: 35vw;
+  border-radius: 10px;
+}
+
+.pokemodal {
+  border: 1px solid grey;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgb(230, 207, 179);
+  margin: 1vh 1vw 1vh 1vw;
+  width: 30vw;
+  padding-bottom: 2vh;
+}
+.pokemodal img {
+  width: 10vw;
 }
